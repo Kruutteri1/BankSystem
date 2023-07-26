@@ -3,6 +3,7 @@ package com.example.banksystem;
 import com.example.banksystem.Model.TransferBalance;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 
@@ -32,8 +33,11 @@ public class BankAccountController {
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public String handle(IllegalArgumentException e) {
+    @ResponseStatus(HttpStatus.BAD_REQUEST) // Specify the HTTP response code (e.g., 400 Bad Request)
+    @ResponseBody // An annotation to indicate that the method should return a response body
+    public ErrorResponse handleIllegalArgumentException(IllegalArgumentException e) {
         log.error(e.getMessage());
-        return "user not found.";
+        return new ErrorResponse(e.getMessage());
     }
+
 }
