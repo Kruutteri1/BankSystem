@@ -1,11 +1,15 @@
 package com.example.banksystem;
 
+import com.example.banksystem.Exceptions.ErrorResponse;
 import com.example.banksystem.Model.TransferBalance;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 import java.math.BigDecimal;
+
 
 @Slf4j
 @RestController
@@ -18,26 +22,20 @@ public class BankAccountController {
     }
 
     @GetMapping("/{accountId}")
-    public BigDecimal getBalance(@PathVariable Long accountId) {
-        return bankAccountService.getBalanceById(accountId);
+    public ResponseEntity<?> getBalance(@PathVariable Long accountId) {
+        BigDecimal userBalance = bankAccountService.getBalanceById(accountId);
+        return new ResponseEntity<>(userBalance, HttpStatus.OK);
     }
 
     @PostMapping("/add")
     public BigDecimal addMoney(@RequestBody TransferBalance transferBalance) {
-        return bankAccountService.addMoney(transferBalance);
+        BigDecimal newBalance = bankAccountService.addMoney(transferBalance);
+        return new ResponseEntity<>(newBalance, HttpStatus.OK).getBody();
     }
 
     @PostMapping("/transfer")
     public BigDecimal transferMoney(@RequestBody TransferBalance transferBalance) {
-        return bankAccountService.transferMoney(transferBalance);
+        BigDecimal newBalance = bankAccountService.addMoney(transferBalance);
+        return new ResponseEntity<>(newBalance, HttpStatus.OK).getBody();
     }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST) // Specify the HTTP response code (e.g., 400 Bad Request)
-    @ResponseBody // An annotation to indicate that the method should return a response body
-    public ErrorResponse handleIllegalArgumentException(IllegalArgumentException e) {
-        log.error(e.getMessage());
-        return new ErrorResponse(e.getMessage());
-    }
-
 }

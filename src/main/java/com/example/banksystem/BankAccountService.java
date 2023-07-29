@@ -1,5 +1,6 @@
 package com.example.banksystem;
 
+import com.example.banksystem.Exceptions.UserNotFoundException;
 import com.example.banksystem.Model.TransferBalance;
 import com.example.banksystem.Model.bank_accounts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class BankAccountService {
         if (bank_accounts != null) {
             return bank_accounts.getAmount();
         } else {
-            throw new IllegalArgumentException("user not found");
+            throw new UserNotFoundException("User with " + accountId + " not found");
         }
     }
     
@@ -33,7 +34,7 @@ public class BankAccountService {
 
         // try to find user in database else user not found return exception
         Optional<bank_accounts> toAccount = Optional.ofNullable(bankAccountRepository.findById(toAccountId)
-                .orElseThrow(() -> new IllegalArgumentException("To account not found")));
+                .orElseThrow(() -> new UserNotFoundException("User with " + toAccountId + " not found")));
 
         // Execute add operation
         BigDecimal toAccountBalance = toAccount.get().getAmount();
@@ -51,9 +52,9 @@ public class BankAccountService {
 
         // try to find users in database else some user not found return exception
         Optional<bank_accounts> fromAccount = Optional.ofNullable(bankAccountRepository.findById(fromAccountId)
-                .orElseThrow(() -> new IllegalArgumentException("From account not found")));
+                .orElseThrow(() -> new UserNotFoundException("User with " + fromAccountId + " not found")));
         Optional<bank_accounts> toAccount = Optional.ofNullable(bankAccountRepository.findById(toAccountId)
-                .orElseThrow(() -> new IllegalArgumentException("To account not found")));
+                .orElseThrow(() -> new UserNotFoundException("User with " + toAccountId + " not found")));
 
         if (fromAccount.isPresent() && toAccount.isPresent()) {
             // Verification of sufficient account balance on fromAccount

@@ -1,0 +1,23 @@
+[33mcommit e00d5f15aba62bf04d2d26fc3c1db2b58bba3ba9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Nikita <z.nikita2810@gmail.com>
+Date:   Wed Jul 26 21:26:20 2023 +0300
+
+    add ExceptionHandler and ErrorResponse class
+
+[33mcommit 89d4f1d56d57bac0627ae856dc240dd8a245a1d4[m
+Author: Nikita <z.nikita2810@gmail.com>
+Date:   Wed Jul 26 21:25:59 2023 +0300
+
+    add ExceptionHandler and ErrorResponse class
+
+[33mcommit 24a67d84504d049373162b478b612ecc897033af[m
+Author: Nikita <z.nikita2810@gmail.com>
+Date:   Wed Jul 26 21:07:45 2023 +0300
+
+    some changes in properties
+
+[33mcommit 3b4cd80e50dcf04ff07a837a801784f82718843f[m
+Author: Nikita <z.nikita2810@gmail.com>
+Date:   Wed Jul 26 21:03:18 2023 +0300
+
+    init commit

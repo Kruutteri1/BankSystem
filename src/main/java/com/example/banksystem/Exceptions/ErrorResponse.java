@@ -1,4 +1,4 @@
-package com.example.banksystem;
+package com.example.banksystem.Exceptions;
 
 /**
  * The ErrorResponse class represents a standardized format for returning error information
@@ -10,8 +10,21 @@ package com.example.banksystem;
 
 public class ErrorResponse {
     private String message;
+    private int statusCode;
 
-    public ErrorResponse(String message) {
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public ErrorResponse() {
+    }
+
+    public ErrorResponse(int statusCode, String message) {
+        this.statusCode = statusCode;
         this.message = message;
     }
 
