@@ -1,5 +1,6 @@
 package com.example.banksystem;
 
+import com.example.banksystem.Exceptions.InsufficientFundsException;
 import com.example.banksystem.Exceptions.UserNotFoundException;
 import com.example.banksystem.Model.TransferBalance;
 import com.example.banksystem.Model.bank_accounts;
@@ -60,7 +61,7 @@ public class BankAccountService {
             // Verification of sufficient account balance on fromAccount
             BigDecimal fromAccountBalance = fromAccount.get().getAmount();
             if (fromAccountBalance.compareTo(amount) < 0) {
-                throw new IllegalArgumentException("Insufficient balance in the from account.");
+                throw new InsufficientFundsException("Insufficient funds in the account");
             }
 
             // Execute operation
@@ -73,7 +74,7 @@ public class BankAccountService {
 
             return toAccount.get().getAmount(); // return of the new account balance where the money was transferred
         } else {
-            throw new IllegalArgumentException("One of the accounts not found.");
+            throw new UserNotFoundException("no one of the accounts not found.");
         }
     }
 }

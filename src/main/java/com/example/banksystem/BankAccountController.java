@@ -35,7 +35,7 @@ public class BankAccountController {
 
     @PostMapping("/transfer")
     public BigDecimal transferMoney(@RequestBody TransferBalance transferBalance) {
-        BigDecimal newBalance = bankAccountService.addMoney(transferBalance);
+        BigDecimal newBalance = bankAccountService.transferMoney(transferBalance);
         return new ResponseEntity<>(newBalance, HttpStatus.OK).getBody();
     }
 }
