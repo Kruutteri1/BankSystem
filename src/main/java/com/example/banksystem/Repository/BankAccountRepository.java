@@ -1,4 +1,4 @@
-package com.example.banksystem;
+package com.example.banksystem.Repository;
 
 import com.example.banksystem.Model.bank_accounts;
 import org.springframework.data.jpa.repository.JpaRepository;
