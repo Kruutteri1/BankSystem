@@ -1,4 +1,4 @@
-package com.example.banksystem.Exceptions;
+package com.example.banksystem.exceptions;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(String message) {

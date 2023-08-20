@@ -1,4 +1,4 @@
-package com.example.banksystem.Exceptions;
+package com.example.banksystem.exceptions;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

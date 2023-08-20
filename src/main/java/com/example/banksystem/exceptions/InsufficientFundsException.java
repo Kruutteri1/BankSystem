@@ -1,4 +1,4 @@
-package com.example.banksystem.Exceptions;
+package com.example.banksystem.exceptions;
 
 public class InsufficientFundsException extends RuntimeException {
     public InsufficientFundsException(String massage) {

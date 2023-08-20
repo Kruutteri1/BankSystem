@@ -1,4 +1,4 @@
-package com.example.banksystem.Model;
+package com.example.banksystem.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,4 +1,4 @@
-package com.example.banksystem.Exceptions;
+package com.example.banksystem.exceptions;
 
 /**
  * The ErrorResponse class represents a standardized format for returning error information

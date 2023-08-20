@@ -1,10 +1,10 @@
-package com.example.banksystem.Service;
+package com.example.banksystem.service;
 
-import com.example.banksystem.Exceptions.InsufficientFundsException;
-import com.example.banksystem.Exceptions.UserNotFoundException;
-import com.example.banksystem.Model.TransferBalance;
-import com.example.banksystem.Model.bank_accounts;
-import com.example.banksystem.Repository.BankAccountRepository;
+import com.example.banksystem.exceptions.InsufficientFundsException;
+import com.example.banksystem.exceptions.UserNotFoundException;
+import com.example.banksystem.model.TransferBalance;
+import com.example.banksystem.model.bank_accounts;
+import com.example.banksystem.repository.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
