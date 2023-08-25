@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 @AllArgsConstructor
 public class RegistrationController {
-
     UserService userService;
 
     @GetMapping("/registration")

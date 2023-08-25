@@ -11,15 +11,14 @@ import org.springframework.stereotype.Service;
 public class UserService {
     UserRepository userRepository;
 
-    private BCryptPasswordEncoder encoder()  {
+    public BCryptPasswordEncoder encoder()  {
         return new BCryptPasswordEncoder();
     }
 
     public void saveUser(User user) {
         user.setPassword(encoder().encode(user.getPassword()));
-
+        user.setPassword(user.getPassword());
 
         userRepository.save(user);
     }
-
 }
