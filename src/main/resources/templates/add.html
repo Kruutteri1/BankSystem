@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Money</title>
+</head>
+<body>
+<h1>Add Money to Account</h1>
+<form th:action="@{/add}" method="post" th:object="${transferBalance}">
+  <label for="to">Account ID:</label>
+  <input th:field="*{to}" type="text" id="to" name="to">
+  <br>
+  <label for="amount">Amount:</label>
+  <input th:field="*{amount}" type="text" id="amount" name="amount">
+  <br>
+  <input type="submit" value="Add Money">
+</form>
+</body>
+</html>

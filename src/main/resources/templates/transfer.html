@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Transfer Money</title>
+</head>
+<body>
+<h1>Transfer Money</h1>
+<form th:action="@{/transfer}" method="post" th:object="${transferBalance}">
+  <label for="from">From Account ID:</label>
+  <input th:field="*{from}" type="text" id="from" name="from">
+  <br>
+  <label for="to">To Account ID:</label>
+  <input th:field="*{to}" type="text" id="to" name="to">
+  <br>
+  <label for="amount">Amount:</label>
+  <input th:field="*{amount}" type="text" id="amount" name="amount">
+  <br>
+  <input type="submit" value="Transfer">
+</form>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.example.banksystem.controller;
 
+import org.springframework.ui.Model;
 import com.example.banksystem.service.BankAccountService;
 import com.example.banksystem.model.TransferBalance;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +14,6 @@ import java.math.BigDecimal;
 
 
 @Slf4j
-//@RestController
 @Controller
 public class BankAccountController {
     private final BankAccountService bankAccountService;
@@ -39,15 +39,27 @@ public class BankAccountController {
         return new ResponseEntity<>(userBalance, HttpStatus.OK);
     }
 
+    @GetMapping("/add")
+    public String showAddForm(Model model) {
+        model.addAttribute("transferBalance", new TransferBalance());
+        return "add";
+    }
+
     @PostMapping("/add")
-    public BigDecimal addMoney(@RequestBody TransferBalance transferBalance) {
+    public ResponseEntity<String> addMoney(@ModelAttribute TransferBalance transferBalance) {
         BigDecimal newBalance = bankAccountService.addMoney(transferBalance);
-        return new ResponseEntity<>(newBalance, HttpStatus.OK).getBody();
+        return new ResponseEntity<>("Money added successfully. New balance: " + newBalance, HttpStatus.OK);
+    }
+
+    @GetMapping("/transfer")
+    public String showTransferForm(Model model) {
+        model.addAttribute("transferBalance", new TransferBalance());
+        return "transfer";
     }
 
     @PostMapping("/transfer")
-    public BigDecimal transferMoney(@RequestBody TransferBalance transferBalance) {
+    public ResponseEntity<String> transferMoney(@ModelAttribute TransferBalance transferBalance) {
         BigDecimal newBalance = bankAccountService.transferMoney(transferBalance);
-        return new ResponseEntity<>(newBalance, HttpStatus.OK).getBody();
+        return new ResponseEntity<>("Transfer successful. New balance: " + newBalance, HttpStatus.OK);
     }
 }
